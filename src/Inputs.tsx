@@ -1,43 +1,33 @@
 import React, {ChangeEvent} from 'react';
+import s from './Inputs.module.css'
 
-type CountSettingsPropsType = {
-    itemForStartCounter:(value:number)=>void
-    startCount:number
+export type InputType = {
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    startValue: number
     maxCount:number
-    itemForMaxtCounter:(value:number)=>void
+    onChangeMax: (e: ChangeEvent<HTMLInputElement>) => void
+    error: string
 }
+const Inputs = (props: InputType) => {
 
-export const CountSettings:React.FC<CountSettingsPropsType> = props => {
-
-    const {itemForStartCounter, startCount, maxCount,itemForMaxtCounter} = props
-
-
-
-    const onChangeStartHandler = (e:ChangeEvent<HTMLInputElement>)=> {
-        let startValue = +e.currentTarget.value;
-        itemForStartCounter(startValue)
-    }
-
-    const onChangeMaxtHandler = (e:ChangeEvent<HTMLInputElement>)=> {
-        let maxValue = +e.currentTarget.value
-        itemForMaxtCounter(maxValue)
-
-
-    }
-
+    const inputClass =!props.error ? "" : s.red
 
     return (
         <div>
+            <span>start value:</span>
+            <input type="number"
+                   value={props.startValue}
+                   onChange={props.onChange}
+                   className={inputClass}
+            />
             <span>max value:</span>
-            <input type={"number"} step={1} value={maxCount}
-                   onChange={onChangeMaxtHandler} />
-            <span  >start value:</span>
-            <input type={"number"} step={1}
-                   value={startCount}
-                   onChange={onChangeStartHandler}/>
-
-
+            <input type="number"
+                   value={props.maxCount}
+                   onChange={props.onChangeMax}
+                   className={inputClass}
+            />
         </div>
     );
 };
 
+export default Inputs;

@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 import './App.css';
 import Set from "./Set";
 import {Count} from "./Count";
+import Inputs from "./Inputs";
 
 function App() {
     let [count, setCount] = useState(0);
@@ -34,32 +35,32 @@ function App() {
         setMaxCount(max)
     }
 
-    if (startValue < 0 || maxCount < 0 ||count === maxCount ||
-        startValue===maxCount || startValue === maxCount ||
+    if (startValue < 0 || maxCount < 0 || count === maxCount ||
+        startValue === maxCount || startValue === maxCount ||
         startValue > maxCount) {
         disButton = (true)
     }
+
     // const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
     // const finalInputClassName = `${s.errorInput} ${error ? s.errorInput: s.superInput} ${className}`
     return (
         <div className="App">
-<div>
-    <Count error={error} setError={setError} count={count}
-           startValue={startValue}
-           setCount={setCount}
-           maxCount={maxCount}
-    />
+            <div>
+                <Inputs onChange={onChangeStart}
+                        startValue={startValue}
+                        maxCount={maxCount}
+                        onChangeMax={onChangeMax}
+                        error={error}
+                />
+                <Set disable={disButton} forSet={forSet}/>
+                <Count error={error} setError={setError} count={count}
+                       startValue={startValue}
+                       setCount={setCount}
+                       maxCount={maxCount}/>
+            </div>
 
-</div>
-
-            <button disabled={disButton}
-                    onClick={increment}>inc</button>
+            <button disabled={disButton} onClick={increment}>inc</button>
             <button onClick={reset}>reset</button>
-            <span>start value</span>
-            <input type="number" value={startValue} onChange={onChangeStart}/>
-            <span>max value</span>
-            <input type="number" value={maxCount} onChange={onChangeMax}/>
-            <Set disable={disButton} forSet={forSet}/>
         </div>
     );
 }

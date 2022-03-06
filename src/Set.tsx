@@ -7,7 +7,6 @@ type SetType = {
 
 const Set = (props: SetType) => {
 
-
     return (
         <div>
           <button disabled={props.disable} onClick={props.forSet}>
