@@ -7,32 +7,17 @@ type countPropsType = {
     count:number
     startValue: number
     setCount: (startValue:number)=>void
-    // forSet:()=>void
     maxCount: number
 }
 
 
 export const Count= (props: countPropsType) => {
 
-
-
-    if (props.startValue < 0 ||
-        props.startValue=== props.maxCount ||
-        props.startValue > props.maxCount) {
-        props.setError('incorect value')
-        props.setCount(+'')
-    }
-    else if (props.startValue > 0 || props.maxCount>0 ) {
-       props.setError('enter values and press set')
-    }
-
     return (
    <>
-       {props.count || <div className={props.error ? s.red : '' }>{props.error} </div>}
-       {/*{props.error ? props.error: props.startValue}*/}
+       {props.error ? props.error: props.count}
    </>
     );
 };
-// const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
 
 // {error && <div className={error ? s.someClass: ''}>warning</div>}

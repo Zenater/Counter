@@ -7,6 +7,8 @@ export type InputType = {
     maxCount:number
     onChangeMax: (e: ChangeEvent<HTMLInputElement>) => void
     error: string
+    item:(value:number)=>void
+    itemMax:(value:number)=>void
 }
 const Inputs = (props: InputType) => {
 
