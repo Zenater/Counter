@@ -1,0 +1,28 @@
+
+.root {
+
+  display: flex;
+  background-color: #8787bb;
+}
+
+.firstBlock{
+  border: solid 5px black;
+  width: 80%;
+  height: 100%;
+  margin-left:  auto;
+  margin-right:  auto;
+}
+.second {
+  border: solid 5px black;
+  width: 80%;
+  height: 100%;
+  margin-left:  auto;
+  margin-right:  auto;
+}
+
+.red{
+  border: 1px solid red;
+}
+
+
+

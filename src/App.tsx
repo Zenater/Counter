@@ -3,6 +3,9 @@ import './App.css';
 import Set from "./Set";
 import {Count} from "./Count";
 import Inputs from "./Inputs";
+import s from './Inputs.module.css'
+import a from './root.module.css'
+
 
 function App() {
     let [count, setCount] = useState(0);
@@ -21,6 +24,7 @@ function App() {
             }
         }
     }
+
     const itemMax =(value:number)=> {
         setMaxCount(value)
         if (value) {
@@ -41,16 +45,19 @@ function App() {
             setCount(startValue)
         }
     };
+
     const forSet = () => {
         if (startValue > 0) {
             setCount(startValue)
             setError("")
         }
     }
+
     const onChangeStart = (e: ChangeEvent<HTMLInputElement>) => {
         let start = +e.currentTarget.value;
         item(start)
     }
+
     const onChangeMax = (e: ChangeEvent<HTMLInputElement>) => {
         let max = +e.currentTarget.value;
         itemMax(max)
@@ -64,25 +71,27 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <div>
+        <div className={a.root}>
+            <div className={a.firstBlock}>
                 <Inputs onChange={onChangeStart}
                         startValue={startValue}
                         maxCount={maxCount}
                         onChangeMax={onChangeMax}
                         error={error}
                         item={item}
-                        itemMax={itemMax}
-                />
-                <Set disable={disButton} forSet={forSet}/>
+                        itemMax={itemMax}/>
+                <div className={a.set}>
+                    <Set disable={disButton} forSet={forSet}/>
+                </div>
+            </div>
+            <div className={a.second}>
                 <Count error={error} setError={setError} count={count}
                        startValue={startValue}
                        setCount={setCount}
                        maxCount={maxCount}/>
-            </div>
-
             <button disabled={disButton} onClick={increment}>inc</button>
             <button onClick={reset}>reset</button>
+            </div>
         </div>
     );
 }
