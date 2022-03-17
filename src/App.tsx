@@ -1,11 +1,9 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import Set from "./Set";
 import {Count} from "./Count";
 import Inputs from "./Inputs";
-import s from './Inputs.module.css'
 import a from './root.module.css'
-
 
 function App() {
     let [count, setCount] = useState(0);
@@ -14,22 +12,21 @@ function App() {
     let [error, setError] = useState('')
 
 
-
-    const item =(value:number)=> {
+    const item = (value: number) => {
         setStartValue(value)
         if (value) {
             setError("Введите число")
-            if (value < 0 ||value===maxCount ||(value === startValue && value != 0)) {
+            if (value < 0 || value === maxCount || (value === startValue && value != 0)) {
                 setError("Ошибка")
             }
         }
     }
 
-    const itemMax =(value:number)=> {
+    const itemMax = (value: number) => {
         setMaxCount(value)
         if (value) {
             setError("Введите число")
-            if (value < 0 ||value===maxCount || (value === startValue && value != 0)) {
+            if (value < 0 || value === maxCount || (value === startValue && value != 0)) {
                 setError("Ошибка")
             }
         }
@@ -51,6 +48,8 @@ function App() {
             setCount(startValue)
             setError("")
         }
+        localStorage.setItem("counterValueStart", JSON.stringify(startValue));
+        localStorage.setItem("counterValueMax", JSON.stringify(maxCount));
     }
 
     const onChangeStart = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +62,15 @@ function App() {
         itemMax(max)
     }
 
+    useEffect(() => {
+        let max = localStorage.getItem("counterValueMax")
+        let min = localStorage.getItem("counterValueStart")
+        if (max && min) {
+            setMaxCount(+max)
+            setStartValue(+min)
+        }
+    }, [])
+
     let disButton = false
 
     if (startValue < 0 || maxCount < 0 || count === maxCount ||
@@ -71,26 +79,31 @@ function App() {
     }
 
     return (
-        <div className={a.root}>
-            <div className={a.firstBlock}>
-                <Inputs onChange={onChangeStart}
+        <div className={a.block}>
+            <div className={a.root}>
+                <div className={a.firstBlock}>
+                    <Inputs
+                        onChange={onChangeStart}
                         startValue={startValue}
                         maxCount={maxCount}
                         onChangeMax={onChangeMax}
                         error={error}
                         item={item}
                         itemMax={itemMax}/>
-                <div className={a.set}>
-                    <Set disable={disButton} forSet={forSet}/>
+                    <div className={a.set}>
+                        <Set disable={disButton} forSet={forSet}/>
+                    </div>
                 </div>
-            </div>
-            <div className={a.second}>
-                <Count error={error} setError={setError} count={count}
-                       startValue={startValue}
-                       setCount={setCount}
-                       maxCount={maxCount}/>
-            <button disabled={disButton} onClick={increment}>inc</button>
-            <button onClick={reset}>reset</button>
+                <div className={a.secondBlock}>
+                    <Count error={error} setError={setError} count={count}
+                           startValue={startValue}
+                           setCount={setCount}
+                           maxCount={maxCount}/>
+                    <div className={a.set}>
+                        <button className={a.button} disabled={disButton} onClick={increment}>inc</button>
+                        <button className={a.button} onClick={reset}>reset</button>
+                    </div>
+                </div>
             </div>
         </div>
     );

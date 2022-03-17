@@ -1,4 +1,5 @@
 import React from 'react';
+import a from './root.module.css'
 
 type SetType = {
     disable: boolean
@@ -9,8 +10,11 @@ const Set = (props: SetType) => {
 
     return (
         <div>
-          <button disabled={props.disable} onClick={props.forSet}>
-              set</button>
+          <button className={a.button}
+                  disabled={props.disable}
+                  onClick={props.forSet}>
+              set
+          </button>
         </div>
     )
 };

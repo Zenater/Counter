@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction} from 'react';
-import s from './Counter.module.css'
+import a from './root.module.css'
 
 type countPropsType = {
     setError: Dispatch<SetStateAction<string>>
@@ -14,9 +14,9 @@ type countPropsType = {
 export const Count= (props: countPropsType) => {
 
     return (
-   <>
-       {props.error ? props.error: props.count}
-   </>
+  <div className={a.count}>
+      {props.error ? props.error: props.count}
+  </div>
     );
 };
 

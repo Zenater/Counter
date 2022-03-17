@@ -1,27 +1,92 @@
 
+.block {
+    height: 100vh;
+    background-color: #67678a;
+}
+
 .root {
-
-  display: flex;
-  background-color: #8787bb;
+    /*border: 1px solid;*/
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-.firstBlock{
-  border: solid 5px black;
-  width: 80%;
-  height: 100%;
-  margin-left:  auto;
-  margin-right:  auto;
-}
-.second {
-  border: solid 5px black;
-  width: 80%;
-  height: 100%;
-  margin-left:  auto;
-  margin-right:  auto;
+.firstBlock {
+    border-radius: 20px;
+    border: 5px solid;
+    height: 400px;
+    width: 400px;
+
 }
 
-.red{
-  border: 1px solid red;
+.inputs {
+    border-radius: 20px;
+    border: 3px solid;
+    margin: 20px;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.set {
+    border: 3px solid;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px;
+    height: 20%;
+}
+
+.button {
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #1db4e1;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.secondBlock {
+    border-radius: 20px;
+    border: 5px solid;
+    height: 400px;
+    width: 400px;
+}
+.span {
+    color: #1db4e1;
+    font-size: 27px;
+}
+.input{
+    border-radius: 20px ;
+    box-shadow: 2px 2px 2px 2px #1db4e1;
+    text-align: center;
+}
+
+.count {
+    border-radius: 20px;
+    border: 3px solid;
+    margin: 20px;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 50px;
+
+}
+
+.red {
+    border: 1px solid red;
 }
 
 
