@@ -82,23 +82,22 @@ function App() {
         <div className={a.block}>
             <div className={a.root}>
                 <div className={a.firstBlock}>
-                    <Inputs
+                   <Inputs
                         onChange={onChangeStart}
                         startValue={startValue}
-                        maxCount={maxCount}
                         onChangeMax={onChangeMax}
                         error={error}
                         item={item}
-                        itemMax={itemMax}/>
+                        itemMax={itemMax} />
                     <div className={a.set}>
                         <Set disable={disButton} forSet={forSet}/>
                     </div>
                 </div>
                 <div className={a.secondBlock}>
-                    <Count error={error} setError={setError} count={count}
+         {/*           <Count error={error} setError={setError} count={count}
                            startValue={startValue}
                            setCount={setCount}
-                           maxCount={maxCount}/>
+                           maxCount={maxCount}/>*/}
                     <div className={a.set}>
                         <button className={a.button} disabled={disButton} onClick={increment}>inc</button>
                         <button className={a.button} onClick={reset}>reset</button>
