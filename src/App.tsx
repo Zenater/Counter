@@ -94,10 +94,10 @@ function App() {
                     </div>
                 </div>
                 <div className={a.secondBlock}>
-         {/*           <Count error={error} setError={setError} count={count}
+                    <Count error={error} setError={setError} count={count}
                            startValue={startValue}
                            setCount={setCount}
-                           maxCount={maxCount}/>*/}
+                           maxCount={maxCount}/>
                     <div className={a.set}>
                         <button className={a.button} disabled={disButton} onClick={increment}>inc</button>
                         <button className={a.button} onClick={reset}>reset</button>

@@ -16,7 +16,6 @@ const InputsRedux = (props: InputType) => {
                        className={a.input}
                        onChange={props.onChangeMin}
                        value={props.settingMinValue}
-                       max={props.settingMaxValue}
                 /></div>
             <div>
                 <span className={a.span}>max value:</span>
@@ -24,7 +23,6 @@ const InputsRedux = (props: InputType) => {
                        value={props.settingMaxValue}
                        onChange={props.onChangeMax}
                        className={a.input}
-                       min={props.settingMinValue}
                 />
             </div>
         </div>

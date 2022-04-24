@@ -8,8 +8,7 @@ const initialState = {
     settingMinValue: 0,
     settingMaxValue: 0,
     errorSetting:false,
-    errorSetting2:false,
-    errorSetting3:''
+
 }
 
 export const countReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
@@ -32,24 +31,19 @@ export const countReducer = (state: initialStateType = initialState, action: Act
                 maxValue: state.settingMaxValue,
             };
         case 'SET_MAX':
-            return {...state, settingMaxValue: action.max};
+            return {...state,
+                settingMaxValue: action.max
+            };
         case 'SET_MIN':
-            return {...state, settingMinValue: action.min};
+            return {...state,
+                settingMinValue: action.min,
+            };
         case "ERROR":
             return {
                 ...state,
                 errorSetting: action.error,
             }
-            case "ERROR2":
-            return {
-                ...state,
-                errorSetting2: action.error,
-            }
-        case "ERROR3":
-            return {
-                ...state,
-                errorSetting3: action.text,
-            }
+
         default:
             return state
     }
@@ -61,10 +55,9 @@ export const setAC = () => ({type: 'SET'} as const);
 export const setMaxAC = (max: number) => ({type: 'SET_MAX', max} as const);
 export const setMinAC = (min: number) => ({type: 'SET_MIN', min} as const);
 export const errorAC = (error:boolean) => ({type: 'ERROR',error} as const);
-export const error2AC = (error:boolean) => ({type: 'ERROR2',error} as const);
-export const errorTextAC = (text:string) => ({type: 'ERROR3',text} as const);
+// export const errorTextAC = (text:string) => ({type: 'ERROR3',text} as const);
 
 type ActionsType = ReturnType<typeof incrementAC> |
     ReturnType<typeof resetAC> |ReturnType<typeof setMinAC> |
     ReturnType<typeof setAC> |   ReturnType<typeof errorAC> |
-    ReturnType<typeof setMaxAC> | ReturnType<typeof errorTextAC> |  ReturnType<typeof error2AC>
+    ReturnType<typeof setMaxAC>
